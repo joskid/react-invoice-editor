@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Item from '../containers/Item';
+import * as Constants from '../util/constants';
 
 /**
  * Display a list of line items within the invoice.
@@ -19,11 +20,40 @@ const ItemList = ({ items }) => (
             </tr>
         </thead>
         <tbody>
-            {items.map(item =>
+
+            {items.items.map(item =>
                 <tr key={item.id}>
                     <Item {...item} />
                 </tr>
             )}
+
+            <tr>
+                <td colSpan="3">
+                    Subtotal
+                </td>
+                <td>
+                    ${items.subTotal.toFixed(2)}
+                </td>
+            </tr>
+
+            <tr>
+                <td colSpan="3">
+                    Tax ({Constants.TAX_RATE * 100}%)
+                </td>
+                <td>
+                    ${items.taxTotal.toFixed(2)}
+                </td>
+            </tr>
+
+            <tr>
+                <td colSpan="3">
+                    Total
+                </td>
+                <td>
+                    ${items.grandTotal.toFixed(2)}
+                </td>
+            </tr>
+
         </tbody>
     </table>
 );
