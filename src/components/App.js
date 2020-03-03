@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ItemList from './ItemList';
 import AddItem from './AddItem';
 import '../styles/App.scss';
+import { render } from 'react-dom';
 
 /**
  * The main parent component for the React Invoice Editor application.
  */
-const App = () => (
-	<div className="App">
+class App extends Component {
 
-		<div className="App-container">
+    /**
+     * Render the component.
+     */
+    render() {
+        
+        return (
+            <div className="App">
 
-			<h1>React Invoice Editor</h1>
-			
-			<ItemList />
-			<AddItem />
+                <div className="App-container">
 
-		</div>
-	</div>
-);
+                    <h1>React Invoice Editor</h1>
+
+                    <ItemList />
+                    <AddItem />
+
+                </div>
+            </div>
+        );
+    }
+};
 
 export default App;

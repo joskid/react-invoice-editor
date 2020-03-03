@@ -54,8 +54,8 @@ class AddItem extends React.Component {
 
         this.setState({
             name: '',
-            quantity: 0,
-            price: 0
+            quantity: '',
+            price: ''
         });
     }
 
