@@ -72,6 +72,7 @@ class AddItem extends React.Component {
                         value={this.state.name}
                         onChange={this.handleChange}
                         type="text"
+                        required={true}
                         placeholder="Item" />
                 </div>
                 <div className="">
@@ -82,6 +83,7 @@ class AddItem extends React.Component {
                         type="number"
                         min="1"
                         step="1"
+                        required={true}
                         placeholder="Quantity" />
                 </div>
                 <div className="">
@@ -91,6 +93,7 @@ class AddItem extends React.Component {
                         onChange={this.handleChange}
                         type="number"
                         step="0.01"
+                        required={true}
                         placeholder="Price" />
                 </div>
                 <div className="">

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ItemList from './ItemList';
 import AddItem from './AddItem';
 import '../styles/App.scss';
-import { render } from 'react-dom';
 
 /**
  * The main parent component for the React Invoice Editor application.

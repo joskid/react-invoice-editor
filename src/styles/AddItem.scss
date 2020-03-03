@@ -10,12 +10,12 @@
 
     div {
 
-        margin: 5px;
-
         input {
+            background: 0;
+            color: $white;
+            border: 1px solid $white;
             box-sizing: border-box;
             padding: 10px;
-            border-right: 1px solid $gray;
             border-radius: 5px;
         }
 
@@ -27,6 +27,7 @@
 
         &:not(:last-of-type) {
             flex-grow: 1;
+            margin-right: 10px;
         }
 
     }
