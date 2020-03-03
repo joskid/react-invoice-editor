@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import ItemList from '../components/ItemList';
+import { removeItem } from '../actions';
 
-const getItems = (items) => {
-    return items;
-};
+const mapStateToProps = (state) => ({
+    lineItems: state.lineItems
+});
 
-const mapStateToProps = state => ({
-    items: getItems(state.items)
-})
+const mapDispatchToProps = dispatch => ({
+    removeItem: id => dispatch(removeItem(id))
+});
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(ItemList);

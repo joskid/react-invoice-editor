@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addItem } from '../actions';
+import '../styles/AddItem.scss';
 
 /**
  * This is a container that handles adding a new line item to the list of 
@@ -32,28 +33,22 @@ const AddItem = ({ dispatch }) => {
     }
 
     return (
-        <form onSubmit={(e) => submitItem(e)}>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <input ref={node => name = node} type="text" placeholder="Item" />
-                        </td>
-                        <td>
-                            <input ref={node => quantity = node} type="number" min="1" step="1" placeholder="Quantity" />
-                        </td>
-                        <td>
-                            <input ref={node => price = node} type="number" step="0.01" placeholder="Price" />
-                        </td>
-                        <td>
-                            <button type="submit">
-                                Submit
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </form>
+        <form onSubmit={(e) => submitItem(e)} className="AddItem">
+            <div className="">
+                <input ref={node => name = node} type="text" placeholder="Item" />
+            </div>
+            <div className="">
+                <input ref={node => quantity = node} type="number" min="1" step="1" placeholder="Quantity" />
+            </div>
+            <div className="">
+                <input ref={node => price = node} type="number" step="0.01" placeholder="Price" />
+            </div>
+            <div className="">
+                <button type="submit">
+                    Add Item
+                </button>
+            </div>
+        </form >
     );
 
 };

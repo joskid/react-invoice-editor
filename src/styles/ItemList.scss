@@ -1,0 +1,79 @@
+@import './index';
+
+.ItemList {
+
+    table {
+
+        width: 100%;
+        border: 1px solid $white;
+        border-spacing: 0;
+
+        thead {
+
+            background-color: $gray;
+
+            tr {
+
+                td  {
+                    padding: 10px;
+                    border-bottom: 1px solid $dark-gray;
+                    font-weight: bold;
+                    text-align: right;
+                }
+
+                td:first-of-type {
+                    text-align: left;
+                }
+
+                td:last-of-type {
+                    text-align: center;
+                }
+
+                td:not(:last-of-type) {
+                    border-right: 1px solid $dark-gray;
+                }
+
+            }
+
+        }
+
+        tbody {
+
+            background-color: $light-gray;
+
+            tr {
+
+                td {
+                    padding: 10px;
+                    text-align: right;
+                }
+
+                td:first-of-type {
+                    text-align: left;
+                }
+
+                td:last-of-type {
+                    text-align: center;
+                }
+
+                td:not(:last-of-type) {
+                    border-right: 1px solid $dark-gray;
+                }
+
+                &.ItemList-summary td {
+                    background-color: $gray;
+                }
+
+                &:not(:last-of-type) td {
+                    border-bottom: 1px solid $dark-gray;
+                }
+
+            }
+
+        }
+
+    
+
+    }
+
+}

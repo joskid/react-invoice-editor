@@ -1,0 +1,21 @@
+@import './index';
+
+.App {
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .App-container {
+
+        min-width: 85vw;
+
+        h1 {
+            text-align: center;
+        }
+
+    }
+
+}

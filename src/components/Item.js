@@ -8,22 +8,22 @@ import PropTypes from 'prop-types';
  * @param {*} item - A line item.
  * @param {*} removeItem - A callback to remove the line item.
  */
-const Item = ({ item, removeItem }) => (
+const Item = ({ name, quantity, price, total, removeItem }) => (
     <React.Fragment>
         <td>
-            {item.name}
+            {name}
         </td>
         <td>
-            {item.quantity}
+            {quantity}
         </td>
         <td>
-            ${item.price.toFixed(2)}
+            ${price.toFixed(2)}
         </td>
         <td>
-            ${item.total.toFixed(2)}
+            ${total.toFixed(2)}
         </td>
         <td>
-            <button onClick={() => removeItem(item.id)}>
+            <button onClick={removeItem}>
                 Delete
             </button>
         </td>
@@ -31,12 +31,11 @@ const Item = ({ item, removeItem }) => (
 );
 
 Item.propTypes = {
-    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
     total: PropTypes.number.isRequired,
     removeItem: PropTypes.func.isRequired
-}
+};
 
 export default Item;

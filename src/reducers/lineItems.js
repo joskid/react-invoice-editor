@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import * as ActionTypes from '../actions/actionTypes';
-import * as Constants from '../util/constants';
+import * as Constants from '../utils/constants';
 
 const INITIAL_STATE = {
     items: [],
@@ -15,7 +15,7 @@ const INITIAL_STATE = {
  * @param {*} state - The default state.
  * @param {*} action - The action/event to handle. 
  */
-const items = (state = INITIAL_STATE, action) => {
+const lineItems = (state = INITIAL_STATE, action) => {
 
     switch (action.type) {
 
@@ -40,7 +40,7 @@ const items = (state = INITIAL_STATE, action) => {
                 items,
                 subTotal,
                 taxTotal,
-                grandTotal
+                grandTotal,
             };
         }
 
@@ -72,4 +72,4 @@ const items = (state = INITIAL_STATE, action) => {
     }
 };
 
-export default items;
+export default lineItems;

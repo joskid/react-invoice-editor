@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import items from './items';
+import lineItems from './lineItems';
 
 /**
  * The root reducer. Individual reducers are combined below.
  */
 export default combineReducers({
-    items,
+    lineItems
 });
