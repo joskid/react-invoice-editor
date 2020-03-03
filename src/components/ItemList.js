@@ -47,54 +47,45 @@ class List extends Component {
                                     <td>
                                         <button onClick={() => this.props.removeItem(item.id)}>
                                             Delete
-                                    </button>
+                                        </button>
                                     </td>
                                 </tr>
                             )}
 
-                            {(this.props.subTotal !== 0) &&
-                                <React.Fragment>
-                                    <tr className="ItemList-summary">
-                                        <td colSpan="3">
-                                            Subtotal
-                                    </td>
-                                        <td colSpan="2">
-                                            ${this.props.subTotal.toFixed(2)}
-                                        </td>
-                                    </tr>
-                                </React.Fragment>
-                            }
 
-                            {(this.props.taxTotal !== 0) &&
-                                <React.Fragment>
-                                    <tr className="ItemList-summary">
-                                        <td colSpan="3">
-                                            Tax ({TAX_RATE * 100}%)
-                                    </td>
-                                        <td colSpan="2">
-                                            ${this.props.taxTotal.toFixed(2)}
-                                        </td>
-                                    </tr>
-                                </React.Fragment>
-                            }
+                            <tr className="ItemList-summary">
+                                <td colSpan="3">
+                                    Subtotal
+                                </td>
+                                <td colSpan="2">
+                                    ${this.props.subTotal.toFixed(2)}
+                                </td>
+                            </tr>
 
-                            {(this.props.grandTotal !== 0) &&
-                                <React.Fragment>
-                                    <tr className="ItemList-summary">
-                                        <td colSpan="3">
-                                            Total
-                                    </td>
-                                        <td colSpan="2">
-                                            ${this.props.grandTotal.toFixed(2)}
-                                        </td>
-                                    </tr>
-                                </React.Fragment>
-                            }
+
+                            <tr className="ItemList-summary">
+                                <td colSpan="3">
+                                    Tax ({TAX_RATE * 100}%)
+                                </td>
+                                <td colSpan="2">
+                                    ${this.props.taxTotal.toFixed(2)}
+                                </td>
+                            </tr>
+
+
+                            <tr className="ItemList-summary">
+                                <td colSpan="3">
+                                    Total
+                                </td>
+                                <td colSpan="2">
+                                    ${this.props.grandTotal.toFixed(2)}
+                                </td>
+                            </tr>
 
                         </tbody>
                     </table>
                 }
-                
+
             </div>
         );
     }
