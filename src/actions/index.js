@@ -1,4 +1,4 @@
-import * as ActionTypes from './actionTypes';
+import { ADD_ITEM, REMOVE_ITEM } from '../constants/action-types';
 
 /**
  * Generate an event to add an item to the list of invoice line items.
@@ -8,10 +8,12 @@ import * as ActionTypes from './actionTypes';
  * @param {*} price - The unit price of the line item.
  */
 export const addItem = (name, quantity, price) => ({
-    type: ActionTypes.ADD_ITEM,
-    name,
-    quantity,
-    price
+    type: ADD_ITEM,
+    payload: {
+        name,
+        quantity,
+        price
+    }
 });
 
 /**
@@ -20,6 +22,8 @@ export const addItem = (name, quantity, price) => ({
  * @param {*} id - The ID of the line item.
  */
 export const removeItem = (id) => ({
-    type: ActionTypes.REMOVE_ITEM,
-    id
+    type: REMOVE_ITEM,
+    payload: {
+        id
+    }
 });

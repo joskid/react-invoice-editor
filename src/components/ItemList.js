@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Item from './Item';
-import * as Constants from '../utils/constants';
+import { connect } from 'react-redux';
+import { removeItem } from '../actions/index';
+import { TAX_RATE } from '../constants/tax-rates';
 import '../styles/ItemList.scss';
 
 /**
  * Display a list of line items within the invoice.
- * 
- * @param {*} lineItems - The line items of the invoice, including totals.
- * @param {*} removeItem - A callback to remove a line item.
  */
-class ItemList extends Component {
+class List extends Component {
 
     /**
      * Render the component.
      */
     render() {
+
         return (
             <div className="ItemList">
                 <table>
@@ -30,46 +28,62 @@ class ItemList extends Component {
                     </thead>
                     <tbody>
 
-                        {this.props.lineItems.items.map(item =>
+                        {this.props.items.map(item =>
                             <tr key={item.id}>
-                                <Item {...item} removeItem={() => this.props.removeItem(item.id)} />
+                                <td>
+                                    {item.name}
+                                </td>
+                                <td>
+                                    {item.quantity}
+                                </td>
+                                <td>
+                                    ${item.price.toFixed(2)}
+                                </td>
+                                <td>
+                                    ${item.total.toFixed(2)}
+                                </td>
+                                <td>
+                                    <button onClick={() => this.props.removeItem(item.id)}>
+                                        Delete
+                                    </button>
+                                </td>
                             </tr>
                         )}
 
-                        {(this.props.lineItems.subTotal !== 0) &&
+                        {(this.props.subTotal !== 0) &&
                             <React.Fragment>
                                 <tr className="ItemList-summary">
                                     <td colSpan="3">
                                         Subtotal
                                     </td>
                                     <td colSpan="2">
-                                        ${this.props.lineItems.subTotal.toFixed(2)}
+                                        ${this.props.subTotal.toFixed(2)}
                                     </td>
                                 </tr>
                             </React.Fragment>
                         }
 
-                        {(this.props.lineItems.taxTotal !== 0) &&
+                        {(this.props.taxTotal !== 0) &&
                             <React.Fragment>
                                 <tr className="ItemList-summary">
                                     <td colSpan="3">
-                                        Tax ({Constants.TAX_RATE * 100}%)
+                                        Tax ({TAX_RATE * 100}%)
                                     </td>
                                     <td colSpan="2">
-                                        ${this.props.lineItems.taxTotal.toFixed(2)}
+                                        ${this.props.taxTotal.toFixed(2)}
                                     </td>
                                 </tr>
                             </React.Fragment>
                         }
 
-                        {(this.props.lineItems.taxTotal !== 0) &&
+                        {(this.props.grandTotal !== 0) &&
                             <React.Fragment>
                                 <tr className="ItemList-summary">
                                     <td colSpan="3">
                                         Total
                                     </td>
                                     <td colSpan="2">
-                                        ${this.props.lineItems.grandTotal.toFixed(2)}
+                                        ${this.props.grandTotal.toFixed(2)}
                                     </td>
                                 </tr>
                             </React.Fragment>
@@ -82,9 +96,17 @@ class ItemList extends Component {
     }
 }
 
-ItemList.propTypes = {
-    lineItems: PropTypes.object.isRequired,
-    removeItem: PropTypes.func.isRequired
+const mapStateToProps = state => {
+    return {
+        items: state.items,
+        subTotal: state.subTotal,
+        taxTotal: state.taxTotal,
+        grandTotal: state.grandTotal
+    };
 };
 
-export default ItemList;
+const mapDispatchToProps = dispatch => ({
+    removeItem: id => dispatch(removeItem(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
